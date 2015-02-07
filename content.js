@@ -2,7 +2,7 @@
 * @Author: zhanghan
 * @Date:   2015-02-03 01:03:26
 * @Last Modified by:   zhanghan
-* @Last Modified time: 2015-02-07 16:44:19
+* @Last Modified time: 2015-02-07 17:10:43
 */
 
 'use strict';
@@ -111,6 +111,24 @@ function myTimer() {
 
 	// Change names in hovercard!!!!!!
 	friend_names = document.getElementsByClassName('ellipsis');
+	for (index = 0; index < friend_names.length; ++index)  {
+		if (celebreties.indexOf(friend_names[index].textContent) != -1) {
+			continue;
+		}
+
+		if (friend_names[index].textContent in changed_names) {
+			friend_names[index].textContent = changed_names[friend_names[index].textContent];
+		} else {
+			var random_number = Math.floor(Math.random() * celebreties.length);
+			changed_names[friend_names[index].textContent] = celebreties[random_number];
+			friend_names[index].textContent = celebreties[random_number];
+		}
+	}
+
+	/***********************************************************************/
+
+	// Change names in profile homepage title
+	friend_names = document.getElementsByClassName('_8_2');
 	for (index = 0; index < friend_names.length; ++index)  {
 		if (celebreties.indexOf(friend_names[index].textContent) != -1) {
 			continue;
